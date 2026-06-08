@@ -1,0 +1,51 @@
+<div class="card shadow-sm">
+  <div class="card-body">
+    <h3>Demande de crédit</h3>
+    <form (ngSubmit)="submit()" class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label">Client ID</label>
+        <input type="number" class="form-control" [(ngModel)]="credit.clientId" name="clientId" required>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Type de crédit</label>
+        <select class="form-select" [(ngModel)]="credit.creditType" name="creditType">
+          <option value="PERSONNEL">Personnel</option>
+          <option value="IMMOBILIER">Immobilier</option>
+          <option value="PROFESSIONNEL">Professionnel</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Montant</label>
+        <input type="number" class="form-control" [(ngModel)]="credit.montant" name="montant" required>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Durée (mois)</label>
+        <input type="number" class="form-control" [(ngModel)]="credit.dureeRemboursement" name="dureeRemboursement" required>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Taux d'intérêt</label>
+        <input type="number" step="0.1" class="form-control" [(ngModel)]="credit.tauxInteret" name="tauxInteret" required>
+      </div>
+      <div class="col-md-6" *ngIf="credit.creditType === 'PERSONNEL' || credit.creditType === 'PROFESSIONNEL'">
+        <label class="form-label">Motif</label>
+        <input type="text" class="form-control" [(ngModel)]="credit.motif" name="motif">
+      </div>
+      <div class="col-md-6" *ngIf="credit.creditType === 'IMMOBILIER'">
+        <label class="form-label">Type de bien</label>
+        <select class="form-select" [(ngModel)]="credit.typeBien" name="typeBien">
+          <option value="APPARTEMENT">Appartement</option>
+          <option value="MAISON">Maison</option>
+          <option value="LOCAL_COMMERCIAL">Local commercial</option>
+        </select>
+      </div>
+      <div class="col-md-6" *ngIf="credit.creditType === 'PROFESSIONNEL'">
+        <label class="form-label">Raison sociale</label>
+        <input type="text" class="form-control" [(ngModel)]="credit.raisonSociale" name="raisonSociale">
+      </div>
+      <div class="col-12">
+        <button class="btn btn-primary" type="submit">Soumettre la demande</button>
+      </div>
+    </form>
+    <div *ngIf="message" class="alert alert-info mt-3">{{ message }}</div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="card shadow-sm">
+  <div class="card-body">
+    <h2>Bienvenue dans la gestion des crédits bancaires</h2>
+    <p *ngIf="authService.isAuthenticated()">Utilisez le menu pour accéder aux fonctionnalités de votre rôle.</p>
+    <p *ngIf="!authService.isAuthenticated()">Veuillez vous connecter pour accéder à l'application.</p>
+  </div>
+</div>

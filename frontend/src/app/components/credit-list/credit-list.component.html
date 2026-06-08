@@ -1,0 +1,37 @@
+<div class="card shadow-sm">
+  <div class="card-body">
+    <h3>Liste des crédits</h3>
+    <div class="mb-3 row g-2">
+      <div class="col-auto">
+        <input type="number" class="form-control" [(ngModel)]="clientId" placeholder="Client ID">
+      </div>
+      <div class="col-auto">
+        <button class="btn btn-secondary" (click)="loadCredits()">Charger</button>
+      </div>
+    </div>
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Client</th>
+          <th>Type</th>
+          <th>Montant</th>
+          <th>Statut</th>
+          <th>Remboursé</th>
+          <th>Restant</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let credit of credits" (click)="selectCredit(credit.id!)" [class.table-primary]="credit.id === selectedCreditId">
+          <td>{{ credit.id }}</td>
+          <td>{{ credit.clientId }}</td>
+          <td>{{ credit.creditType }}</td>
+          <td>{{ credit.montant | currency:'EUR' }}</td>
+          <td>{{ credit.statut }}</td>
+          <td>{{ credit.totalPayee | currency:'EUR' }}</td>
+          <td>{{ credit.remainingBalance | currency:'EUR' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="card shadow-sm">
+  <div class="card-body">
+    <h3>Gestion des clients</h3>
+    <form (ngSubmit)="addClient()" class="row g-3 mb-4">
+      <div class="col-md-5">
+        <input type="text" class="form-control" placeholder="Nom" [(ngModel)]="newClient.nom" name="nom" required>
+      </div>
+      <div class="col-md-5">
+        <input type="email" class="form-control" placeholder="Email" [(ngModel)]="newClient.email" name="email" required>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-success w-100" type="submit">Ajouter</button>
+      </div>
+    </form>
+    <div *ngIf="message" class="alert alert-success">{{ message }}</div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let client of clients">
+          <td>{{ client.id }}</td>
+          <td>{{ client.nom }}</td>
+          <td>{{ client.email }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

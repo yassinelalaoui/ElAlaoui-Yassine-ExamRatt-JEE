@@ -1,0 +1,49 @@
+<div class="card shadow-sm">
+  <div class="card-body">
+    <h3>Suivi des remboursements</h3>
+    <div class="row g-2 mb-3">
+      <div class="col-md-3">
+        <input type="number" class="form-control" [(ngModel)]="creditId" placeholder="Credit ID">
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-secondary" (click)="loadPayments()">Charger</button>
+      </div>
+    </div>
+    <div class="mb-4">
+      <h5>Ajouter un paiement</h5>
+      <div class="row g-3">
+        <div class="col-md-3">
+          <input type="number" class="form-control" [(ngModel)]="payment.montant" name="montant" placeholder="Montant" required>
+        </div>
+        <div class="col-md-3">
+          <select class="form-select" [(ngModel)]="payment.type" name="type">
+            <option value="MENSUALITE">Mensualité</option>
+            <option value="REMBOURSEMENT_ANTICIPE">Remboursement anticipé</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-primary" (click)="addPayment()">Enregistrer</button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="message" class="alert alert-info">{{ message }}</div>
+    <table class="table table-sm table-bordered">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Date</th>
+          <th>Montant</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let remboursement of remboursements">
+          <td>{{ remboursement.id }}</td>
+          <td>{{ remboursement.date }}</td>
+          <td>{{ remboursement.montant | currency:'EUR' }}</td>
+          <td>{{ remboursement.type }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
