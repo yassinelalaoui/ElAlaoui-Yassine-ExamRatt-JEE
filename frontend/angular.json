@@ -46,5 +46,8 @@
       }
     }
   },
-  "defaultProject": "gestion-credit-frontend"
+  "defaultProject": "gestion-credit-frontend",
+  "cli": {
+    "analytics": false
+  }
 }
