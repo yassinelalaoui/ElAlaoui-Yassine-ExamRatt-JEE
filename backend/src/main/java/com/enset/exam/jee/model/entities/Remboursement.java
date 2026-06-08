@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.time.LocalDate;
 
@@ -25,5 +26,6 @@ public class Remboursement {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "credit_id")
+    @ToString.Exclude
     private Credit credit;
 }
