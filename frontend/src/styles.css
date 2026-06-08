@@ -1,0 +1,13 @@
+:root {
+  --primary: #0d6efd;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+}
+
+.container {
+  padding-top: 2rem;
+}
